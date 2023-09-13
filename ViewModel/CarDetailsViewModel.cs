@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CarManager.ViewModel
 {
-    internal class CarDetailsViewModel
+    public partial class CarDetailsViewModel : BaseViewModel
     {
     }
 }

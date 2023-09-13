@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CarManager.View.CarsViewPage"
+             xmlns:model="clr-namespace:CarManager.Model"
+             Title="CarsViewPage">
+
+
+    <CollectionView>
+        <CollectionView.ItemsSource>
+            <x:Array Type="{x:Type model:Car}">
+                <model:Car 
+                    Make="Nissan"
+                    Model="370z"
+                    ModelYear="2017"
+                    PurchasedYear="2023"
+                    PurchasedMonth="02"
+                    Price="37000"
+                    Image="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/2013_Nissan_370Z_%28Z34_MY13.5%29_coupe_%282015-06-18%29_01.jpg/400px-2013_Nissan_370Z_%28Z34_MY13.5%29_coupe_%282015-06-18%29_01.jpg"/>
+                <model:Car 
+                    Make="Honda"
+                    Model="Civic"
+                    ModelYear="2019"
+                    PurchasedYear="2020"
+                    PurchasedMonth="06"
+                    Price="20000"/>
+                <model:Car 
+                    Make="Ford"
+                    Model="Mustang"
+                    ModelYear="2016"
+                    PurchasedYear="2018"
+                    PurchasedMonth="04"
+                    Price="25000"
+                    Image="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/1986_Mustang_SVO_gray.jpg/400px-1986_Mustang_SVO_gray.jpg"/>
+            </x:Array>
+        </CollectionView.ItemsSource>
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="model:Car">
+                <HorizontalStackLayout>
+                    <Image Source="{Binding Image}"
+                           HeightRequest="100"
+                           WidthRequest="100"
+                           Aspect="AspectFill"/>
+                    <VerticalStackLayout Padding="10" Spacing="10">
+                        <Label Text="{Binding Make}" FontSize="25"/>
+                        <Label Text="{Binding Model}" FontSize="15"/>
+                        <Label Text="{Binding ModelYear}" FontSize="15"/>
+                        <Label Text="{Binding PurchasedYear}" FontSize="15"/>
+                        <Label Text="{Binding PurchasedMonth}" FontSize="15"/>
+                        <Label Text="{Binding Price}" FontSize="15"/>
+                    </VerticalStackLayout>
+                </HorizontalStackLayout>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+    
+</ContentPage>

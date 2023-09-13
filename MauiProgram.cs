@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
+using CarManager.View;
+using CarManager.Services;
 
 namespace CarManager
 {
@@ -16,6 +18,7 @@ namespace CarManager
                 });
             builder.Services.AddSingleton<CarService>();
             builder.Services.AddSingleton<CarsViewModel>();
+            builder.Services.AddSingleton<MainViewModel>();
             builder.Services.AddSingleton<MainPage>();
 #if DEBUG
 		builder.Logging.AddDebug();

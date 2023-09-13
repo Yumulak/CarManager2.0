@@ -1,4 +1,4 @@
-namespace CarManager.View;
+namespace CarManager;
 
 public partial class DetailsPage : ContentPage
 {

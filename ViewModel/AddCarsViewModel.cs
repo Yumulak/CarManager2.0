@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace CarManager.ViewModel
 {
-    public partial class CarsViewModel : BaseViewModel
+    public partial class AddCarsViewModel : BaseViewModel
     {
+
     }
 }

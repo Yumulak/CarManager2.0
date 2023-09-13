@@ -6,7 +6,20 @@ using System.Threading.Tasks;
 
 namespace CarManager.ViewModel
 {
-    internal class BaseViewModel
+    public partial class BaseViewModel : ObservableObject
     {
+        public BaseViewModel()
+        {
+
+        }
+
+        [ObservableProperty]
+        [NotifyPropertyChangedFor(nameof(Title))]
+        bool isBusy;
+
+        [ObservableProperty]
+        string title;
+        
+        public bool isNotBusy => !isBusy;
     }
 }

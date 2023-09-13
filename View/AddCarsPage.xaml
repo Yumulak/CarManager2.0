@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CarManager.View.AddCarsPage"
+             xmlns:model="clr-namespace:CarManager.Model"
+             xmlns:viewmodel="clr-namespace:CarManager.ViewModel"
+             x:DataType="viewmodel:AddCarsViewModel"
+             Title="AddCarsPage">
+    
+    <Grid RowDefinitions="100, Auto, Auto, Auto"
+          ColumnDefinitions=".33*,.33*,.33*"
+          Padding="10"
+          RowSpacing="100"
+          ColumnSpacing="10">
+
+        <Image Grid.ColumnSpan="5"
+               Source="car.png"/>
+
+        <Entry x:Name="txtMake" Placeholder="Make"
+               Grid.Row="1" Grid.Column="0" Text="{Binding Make}"/>
+        <Entry x:Name="txtModel" Placeholder="Model"
+               Grid.Row="1" Grid.Column="1" Text="{Binding Model}"/>
+        <Entry x:Name="txtYear" Placeholder="Model Year"
+               Grid.Row="1" Grid.Column="2" Text="{Binding Year}"/>
+        <Entry x:Name="txtPurchaseYear" Placeholder="Year Purchased"
+               Grid.Row="2" Grid.Column="0" Text="{Binding PurchaseYear}"/>
+        <Entry x:Name="txtPurchaseMonth" Placeholder="Month Purchased"
+               Grid.Row="2" Grid.Column="1" Text="{Binding PurchaseMonth}"/>
+        <Entry x:Name="txtPrice" Placeholder="Price"
+               Grid.Row="2" Grid.Column="2" Text="{Binding Price}"/>
+
+        <Button Text="Add" Grid.Row="3" Grid.Column="1" Command="{Binding AddCarCommand}"/>
+    </Grid>
+</ContentPage>
