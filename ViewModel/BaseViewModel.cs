@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CarManager.View;
 
 namespace CarManager.ViewModel
 {
@@ -20,6 +21,6 @@ namespace CarManager.ViewModel
         [ObservableProperty]
         string title;
         
-        public bool isNotBusy => !isBusy;
+        public bool isNotBusy => !IsBusy;
     }
 }

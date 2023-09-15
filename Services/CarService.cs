@@ -11,10 +11,11 @@ namespace CarManager.Services
 {
     public class CarService
     {
-        HttpClient httpClient;
+        
         public CarService()
         {
-            httpClient = new HttpClient();
+            var httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://parseapi.back4app.com/classes");
         }
 
         List<Car> carsList = new List<Car>();
@@ -24,7 +25,7 @@ namespace CarManager.Services
             {
                 return carsList;
             }
-            var url = "https://parseapi.back4app.com/classes/Carmodels_Car_Model_List?limit=10&excludeKeys=Category";
+            var url = "Carmodels_Car_Model_List?limit=10&excludeKeys=Category";
             using(HttpClient client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Add("X-Parse-Application-Id", "vaIq60tklaAFDKD70gKIcWQODsc74pStnIxgeehr"); // This is your app's application id

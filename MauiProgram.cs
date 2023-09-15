@@ -17,9 +17,18 @@ namespace CarManager
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
             builder.Services.AddSingleton<CarService>();
-            builder.Services.AddSingleton<CarsViewModel>();
+            builder.Services.AddSingleton<CarItemDatabase>();
+            builder.Services.AddSingleton<DBConstants>();
+            
             builder.Services.AddSingleton<MainViewModel>();
+            builder.Services.AddSingleton<AddCarsViewModel>();
+            builder.Services.AddSingleton<CarsViewModel>();
+            builder.Services.AddSingleton<CarDetailsViewModel>();
+
             builder.Services.AddSingleton<MainPage>();
+            builder.Services.AddSingleton<AddCarsPage>();
+            builder.Services.AddSingleton<CarsViewPage>();
+            builder.Services.AddSingleton<DetailsPage>();
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif

@@ -3,55 +3,77 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CarManager.View.CarsViewPage"
              xmlns:model="clr-namespace:CarManager.Model"
-             Title="CarsViewPage">
+             xmlns:viewmodel="clr-namespace:CarManager.ViewModel"
+             x:DataType="viewmodel:CarsViewModel"
+             Title="{Binding Title}">
 
+    <Grid RowDefinitions="100, Auto, *"
+          ColumnDefinitions=".33*, .33*, .33*"
+          Padding="10"
+          RowSpacing="100"
+          ColumnSpacing="10">
 
-    <CollectionView>
-        <CollectionView.ItemsSource>
-            <x:Array Type="{x:Type model:Car}">
-                <model:Car 
-                    Make="Nissan"
-                    Model="370z"
-                    ModelYear="2017"
-                    PurchasedYear="2023"
-                    PurchasedMonth="02"
-                    Price="37000"
-                    Image="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/2013_Nissan_370Z_%28Z34_MY13.5%29_coupe_%282015-06-18%29_01.jpg/400px-2013_Nissan_370Z_%28Z34_MY13.5%29_coupe_%282015-06-18%29_01.jpg"/>
-                <model:Car 
-                    Make="Honda"
-                    Model="Civic"
-                    ModelYear="2019"
-                    PurchasedYear="2020"
-                    PurchasedMonth="06"
-                    Price="20000"/>
-                <model:Car 
-                    Make="Ford"
-                    Model="Mustang"
-                    ModelYear="2016"
-                    PurchasedYear="2018"
-                    PurchasedMonth="04"
-                    Price="25000"
-                    Image="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/1986_Mustang_SVO_gray.jpg/400px-1986_Mustang_SVO_gray.jpg"/>
-            </x:Array>
-        </CollectionView.ItemsSource>
-        <CollectionView.ItemTemplate>
-            <DataTemplate x:DataType="model:Car">
-                <HorizontalStackLayout>
-                    <Image Source="{Binding Image}"
-                           HeightRequest="100"
-                           WidthRequest="100"
-                           Aspect="AspectFill"/>
-                    <VerticalStackLayout Padding="10" Spacing="10">
-                        <Label Text="{Binding Make}" FontSize="25"/>
-                        <Label Text="{Binding Model}" FontSize="15"/>
-                        <Label Text="{Binding ModelYear}" FontSize="15"/>
-                        <Label Text="{Binding PurchasedYear}" FontSize="15"/>
-                        <Label Text="{Binding PurchasedMonth}" FontSize="15"/>
-                        <Label Text="{Binding Price}" FontSize="15"/>
-                    </VerticalStackLayout>
-                </HorizontalStackLayout>
-            </DataTemplate>
-        </CollectionView.ItemTemplate>
-    </CollectionView>
+        <Image Grid.ColumnSpan="3"
+               Source="car.png"/>
+
+        <Button Text="Sort by Year" Grid.Row="1" Grid.Column="0" Command="{Binding SortByYearCommand}"/>
+        <Button Text="Sort by Price" Grid.Row="1" Grid.Column="2" Command="{Binding SortByPriceCommand}"/>
+
+        <CollectionView Grid.Row="2" Grid.ColumnSpan="3" ItemsSource="{Binding Cars}"
+                        SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate >
+                    <Frame Margin="2">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={RelativeSource 
+                                        AncestorType={x:Type viewmodel:CarsViewModel}}, Path=TapCommand}"
+                                               CommandParameter="{Binding .}"/>
+                        </Frame.GestureRecognizers>
+                        <StackLayout>
+                            <Grid ColumnDefinitions=".33*,.33*,.33*">
+                                    <Label x:Name="txtYear" Text="{Binding Year}" Grid.Column="0"
+                                        FontSize="24"/>
+                                    <Label x:Name="txtMake" Text="{Binding Make}" Grid.Column="1"
+                                        FontSize="24"/>
+                                    <Label x:Name="txtModel" Text="{Binding Model}" Grid.Column="2"
+                                        FontSize="24"/>
+                                </Grid>
+                        </StackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
     
+    <!--<Grid ColumnDefinitions="*,*"
+          ColumnSpacing="10"
+          RowDefinitions="*, Auto"
+          RowSpacing="0">
+        <CollectionView x:Name="carsCView" BackgroundColor="Transparent" 
+                        Grid.ColumnSpan="2"
+                        ItemsSource="{Binding Cars}"
+                        SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Car">
+                    <Grid Padding="10">
+                        <Frame HeightRequest="125">
+                            <Label Text="{Binding Model}"/>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+        <Button Text="Get Cars"
+                Command="{Binding GetCarsCommand}"
+                IsEnabled="{Binding isNotBusy}"
+                Grid.Row="1"
+                Margin="8"/>
+        <ActivityIndicator IsVisible="{Binding IsBusy}"
+                           IsRunning="{Binding IsBusy}"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="CenterAndExpand"
+                           Grid.RowSpan="2"
+                           Grid.ColumnSpan="2"/>
+    </Grid>-->
 </ContentPage>

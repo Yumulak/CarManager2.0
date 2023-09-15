@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:model="clr-namespace:CarManager.Model"
              xmlns:viewmodel="clr-namespace:CarManager.ViewModel"
+             x:DataType="viewmodel:MainViewModel"
              x:Class="CarManager.View.MainPage">
 
     <ScrollView>
@@ -27,13 +28,13 @@
                 x:Name="AddCarsBtn"
                 Text="Add Cars"
                 SemanticProperties.Hint="Takes you to the add car page"
-                Clicked="AddCarsBtn_Clicked"
+                Command="{Binding AddCarsCommand}"
                 HorizontalOptions="Center" />
             <Button
                 x:Name="ViewCarsBtn"
                 Text="View Cars"
                 SemanticProperties.Hint="Takes you to the View Cars page"
-                Clicked="ViewCarsBtn_Clicked"
+                Command="{Binding ViewCarsCommand}"
                 HorizontalOptions="Center" />
 
         </VerticalStackLayout>
