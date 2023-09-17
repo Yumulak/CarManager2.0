@@ -9,7 +9,7 @@ namespace CarManager.Services
 {
     class DBConstants
     {
-        public const string DatabaseFilename = "CarsSQLite.db3";
+        public const string DatabaseFilename = "CarsDB.db3";
 
         public const SQLite.SQLiteOpenFlags Flags =
         // open the database in read/write mode

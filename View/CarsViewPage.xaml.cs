@@ -10,27 +10,41 @@ using CarManager.View;
 public partial class CarsViewPage : ContentPage
 {
     CarItemDatabase database;
-    public ObservableCollection<Car> Cars { get; } = new();
+    public ObservableCollection<Car> Cars { get; set; } = new();
 
-    public CarsViewPage(CarsViewModel vm)
+    public CarsViewPage(CarsViewModel vm, CarItemDatabase db)
 	{
 		InitializeComponent();
-		BindingContext = vm;
+        //BindingContext = vm;
+        BindingContext = this;
+        database = db;
 	}
 
     [RelayCommand]
-    async Task ONNavigatedTo(NavigatedToEventArgs args)
+    protected override async void OnNavigatedTo(NavigatedToEventArgs args)
     {
         base.OnNavigatedTo(args);
-        var items = await database.GetCarsAsync();
+        var cars = await database.GetAllCarsAsync();
         MainThread.BeginInvokeOnMainThread(() =>
         {
 
             Cars.Clear();
-            foreach (var item in items)
+            foreach (var car in cars)
             {
-                Cars.Add(item);
+                Cars.Add(car);
             }
+        });
+    }
+    private async void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (e.CurrentSelection.FirstOrDefault() is not Car car)
+        {
+            return;
+        }
+
+        await Shell.Current.GoToAsync(nameof(DetailsPage), true, new Dictionary<string, object>
+        {
+            ["Car"] = car
         });
     }
 }

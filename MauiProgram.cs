@@ -19,16 +19,24 @@ namespace CarManager
             builder.Services.AddSingleton<CarService>();
             builder.Services.AddSingleton<CarItemDatabase>();
             builder.Services.AddSingleton<DBConstants>();
-            
-            builder.Services.AddSingleton<MainViewModel>();
-            builder.Services.AddSingleton<AddCarsViewModel>();
-            builder.Services.AddSingleton<CarsViewModel>();
-            builder.Services.AddSingleton<CarDetailsViewModel>();
 
             builder.Services.AddSingleton<MainPage>();
+            builder.Services.AddSingleton<MainViewModel>();
+
             builder.Services.AddSingleton<AddCarsPage>();
-            builder.Services.AddSingleton<CarsViewPage>();
-            builder.Services.AddSingleton<DetailsPage>();
+            builder.Services.AddSingleton<AddCarsViewModel>();
+
+            builder.Services.AddTransient<CarsViewPage>();
+            builder.Services.AddTransient<CarsViewModel>();
+
+            builder.Services.AddTransient<DetailsPage>();
+            builder.Services.AddTransient<CarDetailsViewModel>();
+
+            
+            
+
+            
+            
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif

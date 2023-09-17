@@ -4,8 +4,7 @@
              x:Class="CarManager.View.CarsViewPage"
              xmlns:model="clr-namespace:CarManager.Model"
              xmlns:viewmodel="clr-namespace:CarManager.ViewModel"
-             x:DataType="viewmodel:CarsViewModel"
-             Title="{Binding Title}">
+             Title="Cars">
 
     <Grid RowDefinitions="100, Auto, *"
           ColumnDefinitions=".33*, .33*, .33*"
@@ -16,64 +15,26 @@
         <Image Grid.ColumnSpan="3"
                Source="car.png"/>
 
-        <Button Text="Sort by Year" Grid.Row="1" Grid.Column="0" Command="{Binding SortByYearCommand}"/>
-        <Button Text="Sort by Price" Grid.Row="1" Grid.Column="2" Command="{Binding SortByPriceCommand}"/>
+        <!--<Button Text="Sort by Year" Grid.Row="1" Grid.Column="0" Command="{Binding SortByYearCommand}"/>
+        <Button Text="Sort by Price" Grid.Row="1" Grid.Column="2" Command="{Binding SortByPriceCommand}"/>-->
 
-        <CollectionView Grid.Row="2" Grid.ColumnSpan="3" ItemsSource="{Binding Cars}"
-                        SelectionMode="None">
+        <CollectionView x:Name="carsViewCollection" Grid.Row="2" Grid.ColumnSpan="3" ItemsSource="{Binding Cars}"
+                        SelectionMode="Single"
+                        SelectionChanged="CollectionView_SelectionChanged">
             <CollectionView.ItemTemplate>
-                <DataTemplate >
-                    <Frame Margin="2">
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding Source={RelativeSource 
-                                        AncestorType={x:Type viewmodel:CarsViewModel}}, Path=TapCommand}"
-                                               CommandParameter="{Binding .}"/>
-                        </Frame.GestureRecognizers>
-                        <StackLayout>
-                            <Grid ColumnDefinitions=".33*,.33*,.33*">
-                                    <Label x:Name="txtYear" Text="{Binding Year}" Grid.Column="0"
+                <DataTemplate x:DataType="model:Car">
+                    <StackLayout>
+                        <Grid ColumnDefinitions=".33*,.33*,.33*">
+                            <Label x:Name="txtYear" Text="{Binding ModelYear}" Grid.Column="0"
                                         FontSize="24"/>
-                                    <Label x:Name="txtMake" Text="{Binding Make}" Grid.Column="1"
+                            <Label x:Name="txtMake" Text="{Binding Make}" Grid.Column="1"
                                         FontSize="24"/>
-                                    <Label x:Name="txtModel" Text="{Binding Model}" Grid.Column="2"
+                            <Label x:Name="txtModel" Text="{Binding Model}" Grid.Column="2"
                                         FontSize="24"/>
-                                </Grid>
-                        </StackLayout>
-                    </Frame>
+                        </Grid>
+                    </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
     </Grid>
-    
-    <!--<Grid ColumnDefinitions="*,*"
-          ColumnSpacing="10"
-          RowDefinitions="*, Auto"
-          RowSpacing="0">
-        <CollectionView x:Name="carsCView" BackgroundColor="Transparent" 
-                        Grid.ColumnSpan="2"
-                        ItemsSource="{Binding Cars}"
-                        SelectionMode="None">
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="model:Car">
-                    <Grid Padding="10">
-                        <Frame HeightRequest="125">
-                            <Label Text="{Binding Model}"/>
-                        </Frame>
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-
-        </CollectionView>
-        <Button Text="Get Cars"
-                Command="{Binding GetCarsCommand}"
-                IsEnabled="{Binding isNotBusy}"
-                Grid.Row="1"
-                Margin="8"/>
-        <ActivityIndicator IsVisible="{Binding IsBusy}"
-                           IsRunning="{Binding IsBusy}"
-                           HorizontalOptions="FillAndExpand"
-                           VerticalOptions="CenterAndExpand"
-                           Grid.RowSpan="2"
-                           Grid.ColumnSpan="2"/>
-    </Grid>-->
 </ContentPage>

@@ -9,18 +9,9 @@ namespace CarManager.Model
 {
     public class Car
     {
-        [PrimaryKey, AutoIncrement]
-        private int ID { get; set; }
-        private string make;
-        private string model;
-        private string year;
-        private string purchasedYear;
-        private string purchasedMonth;
-        private string price;
 
         public Car(string make, string model, string year, string purchaseYear, string purchaseMonth, string price)
         {
-            this.ID = ID;
             Make = make;
             Model = model;
             ModelYear = Convert.ToInt32(year);
@@ -29,7 +20,8 @@ namespace CarManager.Model
             Price = Convert.ToInt32(price);
         }
         public Car() { }
-        public int Id { get { return ID; } }
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
         public string Make { get; set; }
         public string Model { get; set; }
         public int ModelYear { get; set; }

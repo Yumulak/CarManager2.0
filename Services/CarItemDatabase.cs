@@ -25,7 +25,7 @@ namespace CarManager.Services
             var result = await Database.CreateTableAsync<Car>();
         }
 
-        public async Task<List<Car>> GetCarsAsync()
+        public async Task<List<Car>> GetAllCarsAsync()
         {
             await Init();
             return await Database.Table<Car>().ToListAsync();

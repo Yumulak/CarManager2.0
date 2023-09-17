@@ -22,5 +22,7 @@ namespace CarManager.ViewModel
         string title;
         
         public bool isNotBusy => !IsBusy;
+
+
     }
 }

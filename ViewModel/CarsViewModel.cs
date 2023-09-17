@@ -21,7 +21,7 @@ namespace CarManager.ViewModel
         [RelayCommand]
         async Task NavigatedTo()
         {
-            var items = await database.GetCarsAsync();
+            var items = await database.GetAllCarsAsync();
             MainThread.BeginInvokeOnMainThread(() =>
             {
 
