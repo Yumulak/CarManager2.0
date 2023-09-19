@@ -14,5 +14,11 @@ namespace CarManager.ViewModel
     public partial class CarDetailsViewModel : BaseViewModel
     {
 
+        public ObservableCollection<Car> Cars { get; } = new();
+
+        public CarDetailsViewModel() 
+        {
+            
+        }
     }
 }

@@ -9,11 +9,8 @@ namespace CarManager.ViewModel
 {
     public partial class AddCarsViewModel : BaseViewModel
     {
-        CarItemDatabase database;
-        public AddCarsViewModel(CarItemDatabase db) 
+        public AddCarsViewModel() 
         {
-            Cars = new ObservableCollection<Car>();
-            database = db;
         }
 
         [ObservableProperty]
@@ -41,7 +38,6 @@ namespace CarManager.ViewModel
             }
             Car car = new(Make, Model, Year, PurchaseYear, PurchaseMonth, Price);
 
-            Cars.Add(car);
             //add item
             Make = string.Empty;
             Model = string.Empty;
@@ -51,7 +47,7 @@ namespace CarManager.ViewModel
             Price = string.Empty;
 
             await Shell.Current.DisplayAlert("Car Added", $"{car.Make} {car.Model}", "OK");
-            await database.SaveItemAsync(car);
+            await CarItemDatabase.AddCarAsync(car);
             await Shell.Current.GoToAsync("..");
         }
     }

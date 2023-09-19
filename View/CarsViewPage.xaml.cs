@@ -9,22 +9,20 @@ using CarManager.View;
 
 public partial class CarsViewPage : ContentPage
 {
-    CarItemDatabase database;
     public ObservableCollection<Car> Cars { get; set; } = new();
 
-    public CarsViewPage(CarsViewModel vm, CarItemDatabase db)
+    public CarsViewPage(CarsViewModel vm)
 	{
 		InitializeComponent();
         //BindingContext = vm;
         BindingContext = this;
-        database = db;
 	}
 
     [RelayCommand]
     protected override async void OnNavigatedTo(NavigatedToEventArgs args)
     {
         base.OnNavigatedTo(args);
-        var cars = await database.GetAllCarsAsync();
+        var cars = await CarItemDatabase.GetAllCarsAsync();
         MainThread.BeginInvokeOnMainThread(() =>
         {
 

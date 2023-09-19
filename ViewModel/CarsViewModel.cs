@@ -10,18 +10,16 @@ namespace CarManager.ViewModel
 {
     public partial class CarsViewModel : BaseViewModel
     {
-        CarItemDatabase database;
         public ObservableCollection<Car> Cars { get; set; } = new();
-        public CarsViewModel(CarService carService, CarItemDatabase carItemDatabase) 
+        public CarsViewModel() 
         {
             Title = "Car Manager";
-            database = carItemDatabase;
         }
 
         [RelayCommand]
         async Task NavigatedTo()
         {
-            var items = await database.GetAllCarsAsync();
+            var items = await CarItemDatabase.GetAllCarsAsync();
             MainThread.BeginInvokeOnMainThread(() =>
             {
 

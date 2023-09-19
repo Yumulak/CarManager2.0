@@ -10,6 +10,7 @@ namespace CarManager
             Routing.RegisterRoute(nameof(CarsViewPage), typeof(CarsViewPage));
             Routing.RegisterRoute(nameof(AddCarsPage), typeof(AddCarsPage));
             Routing.RegisterRoute(nameof(DetailsPage), typeof(DetailsPage));
+            Routing.RegisterRoute(nameof(MaintenancePage), typeof(MaintenancePage));
         }
     }
 }

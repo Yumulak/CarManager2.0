@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CarManager.View.MaintenancePage"
+             xmlns:model="clr-namespace:CarManager.Model"
+             xmlns:viewmodel="clr-namespace:CarManager.ViewModel"
+             x:DataType="model:Car"
+             Title="Maintenance">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20"
+                             Spacing="10"
+                             VerticalOptions="StartAndExpand">
+            <Grid ColumnDefinitions=".80*, .20*"
+                  RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto">
+                
+
+                <Label Text="Monthly" FontSize="24" Grid.Row="0"/>
+
+                <Label Text="{Binding monthlyOilChecked, StringFormat='{0:d}'}" Grid.Column="0" Grid.Row="1"/>
+                <Button Text="Done" Grid.Column="1" Grid.Row="1"/>
+                
+                <Label Text="{Binding monthlyTiresChecked}" Grid.Row="2"/>
+                <Button Text="Done" Grid.Column="1" Grid.Row="2"/>
+                
+                <Label Text="{Binding monthlyLightsChecked}" Grid.Row="3"/>
+                <Button Text="Done" Grid.Column="1" Grid.Row="3"/>
+                
+                <Label Text="{Binding monthlyWasherFluidChecked}" Grid.Row="4"/>
+                <Button Text="Done" Grid.Column="1" Grid.Row="4"/>
+                
+                
+                <Label Text="Quarterly" FontSize="24" Grid.Row="5"/>
+                
+                <Label Text="{Binding quarterlyBrakeFluidChecked}" Grid.Row="6"/>
+                <Button Text="Done" Grid.Column="1" Grid.Row="6"/>
+                
+                <Label Text="{Binding quarterlyTransFluidChecked}" Grid.Row="7"/>
+                <Button Text="Done" Grid.Column="1" Grid.Row="7"/>
+                
+                <Label Text="{Binding quarterlySteeringFluidChecked}" Grid.Row="8"/>
+                <Button Text="Done" Grid.Column="1" Grid.Row="8"/>
+                
+                <Label Text="{Binding quarterlyHosesBeltsChecked}" Grid.Row="9"/>
+                <Button Text="Done" Grid.Column="1" Grid.Row="9"/>
+                
+                
+                <Label Text="Biannually" FontSize="24" Grid.Row="10"/>
+                
+                <Label Text="{Binding sixMoOilChanged}" Grid.Row="11"/>
+                <Button Text="Done" Grid.Column="1" Grid.Row="11"/>
+                
+                <Label Text="{Binding sixMoTiresRotated}" Grid.Row="12"/>
+                <Button Text="Done" Grid.Column="1" Grid.Row="12"/>
+                
+                <Label Text="{Binding sixMoBatteryChecked}" Grid.Row="13"/>
+                <Button Text="Done" Grid.Column="1" Grid.Row="13"/>
+                
+                <Label Text="{Binding sixMoAirFiltersChecked}" Grid.Row="14"/>
+                <Button Text="Done" Grid.Column="1" Grid.Row="14"/>
+                
+                
+                <Label Text="Annually" FontSize="24" Grid.Row="15"/>
+                
+                <Label Text="{Binding yearlyAlignmentDone}" Grid.Row="16"/>
+                <Button Text="Done" Grid.Column="1" Grid.Row="16"/>
+                
+                <Label Text="{Binding yearlyBrakesChecked}" Grid.Row="17"/>
+                <Button Text="Done" Grid.Column="1" Grid.Row="17"/>
+                
+            </Grid>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

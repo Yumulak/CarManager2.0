@@ -13,20 +13,22 @@ public partial class DetailsPage : ContentPage
 		get => BindingContext as Car;
 		set => BindingContext = value;
 	}
-	CarItemDatabase database;
-	public DetailsPage(CarsViewModel vm, CarItemDatabase db)
+	public DetailsPage(CarsViewModel vm)
 	{
         InitializeComponent();
 		BindingContext = vm;
-		database = db;
 	}
     async void OnDeleteClicked(object sender, EventArgs e)
     {
-        await database.DeleteItemAsync(Car);
+        await CarItemDatabase.DeleteItemAsync(Car);
         await Shell.Current.GoToAsync("..");
     }
-    async void OnBackClicked(object sender, EventArgs e)
+
+    async void GoToMaintenancePage(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync("..");
+        await Shell.Current.GoToAsync(nameof(MaintenancePage), true, new Dictionary<string, object>
+        {
+            { "Car" , car}
+        });
     }
 }

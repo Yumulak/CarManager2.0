@@ -2,24 +2,37 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CarManager.View.DetailsPage"
-             xmlns:models="clr-namespace:CarManager.Model"
-             x:DataType="models:Car"
+             xmlns:model="clr-namespace:CarManager.Model"
+             xmlns:viewmodel ="clr-namespace:CarManager.ViewModel"
+             x:DataType="model:Car"
              Title="{Binding Model}">
 
     <ScrollView>
-        <VerticalStackLayout Padding="20"
-                             Spacing="10"
-                             VerticalOptions="StartAndExpand">
-            <Label Text="Make"/>
-            <Label Text="{Binding Make}"/>
-            <Label Text="Model" />
-            <Label Text="{Binding Model}" />
-            <Label Text="Model Year" />
-            <Label Text="{Binding ModelYear}" />
-            <Button Text="Delete"
-                    Clicked="OnDeleteClicked" />
-            <Button Text="Go Back"
-                    Clicked="OnBackClicked" />
-        </VerticalStackLayout>
-    </ScrollView>   
+        <Frame>
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer CommandParameter="{Binding .}"
+                              Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CarDetailsViewModel}}, Path=GoToMaintenanceCommand}"/>
+            </Frame.GestureRecognizers>
+                <VerticalStackLayout Padding="20"
+                                 Spacing="10"
+                                 VerticalOptions="StartAndExpand">            
+                    <Grid RowDefinitions="Auto, *, *, *, *, *, *, *">
+                        <Label Text="Make" FontSize="24" Grid.Row="0"/>
+                        <Label Text="{Binding Make}" Grid.Row="1"/>
+                        <Label Text="Model" FontSize="24" Grid.Row="2"/>
+                        <Label Text="{Binding Model}" Grid.Row="3"/>
+                        <Label Text="Year" FontSize="24" Grid.Row="4"/>
+                        <Label Text="{Binding ModelYear}" Grid.Row="5"/>
+                        
+                        <Button Text="Maintenance"
+                                Clicked="GoToMaintenancePage" Grid.Row="6"/>
+    
+                        <Button Text="Delete"
+                                Clicked="OnDeleteClicked" Grid.Row="7"/>
+                    </Grid>            
+            </VerticalStackLayout>
+        </Frame>
+    </ScrollView>
+
+
 </ContentPage>

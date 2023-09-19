@@ -7,15 +7,10 @@ using SQLite;
 
 namespace CarManager.Services
 {
-    public class CarItemDatabase
+    public static class CarItemDatabase
     {
-        SQLiteAsyncConnection Database;
-
-        public CarItemDatabase()
-        {
-
-        }
-        async Task Init()
+        static SQLiteAsyncConnection Database;
+        static async Task Init()
         {
             if (Database is not null)
             {
@@ -25,19 +20,19 @@ namespace CarManager.Services
             var result = await Database.CreateTableAsync<Car>();
         }
 
-        public async Task<List<Car>> GetAllCarsAsync()
+        public static async Task<List<Car>> GetAllCarsAsync()
         {
             await Init();
             return await Database.Table<Car>().ToListAsync();
         }
         
-        public async Task<Car> GetCarAsync(int id)
+        public static async Task<Car> GetCarAsync(int id)
         {
             await Init();
             return await Database.Table<Car>().Where(i => i.Id == id).FirstOrDefaultAsync();
         }
 
-        public async Task<int> SaveItemAsync(Car car)
+        public static async Task<int> AddCarAsync(Car car)
         {
             await Init();
             if (car.Id != 0)
@@ -46,7 +41,7 @@ namespace CarManager.Services
                 return await Database.InsertAsync(car);
         }
 
-        public async Task<int> DeleteItemAsync(Car car)
+        public static async Task<int> DeleteItemAsync(Car car)
         {
             await Init();
             return await Database.DeleteAsync(car);
