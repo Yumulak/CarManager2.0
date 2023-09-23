@@ -4,9 +4,10 @@
              x:Class="CarManager.View.CarsViewPage"
              xmlns:model="clr-namespace:CarManager.Model"
              xmlns:viewmodel="clr-namespace:CarManager.ViewModel"
+             x:DataType="viewmodel:CarsViewModel"
              Title="Cars">
 
-    <Grid RowDefinitions="100, Auto, *"
+    <Grid RowDefinitions="Auto, Auto, Auto"
           ColumnDefinitions=".33*, .33*, .33*"
           Padding="10"
           RowSpacing="100"
@@ -18,21 +19,23 @@
         <!--<Button Text="Sort by Year" Grid.Row="1" Grid.Column="0" Command="{Binding SortByYearCommand}"/>
         <Button Text="Sort by Price" Grid.Row="1" Grid.Column="2" Command="{Binding SortByPriceCommand}"/>-->
 
-        <CollectionView x:Name="carsViewCollection" Grid.Row="2" Grid.ColumnSpan="3" ItemsSource="{Binding Cars}"
+        <CollectionView x:Name="carsViewCollection" Grid.ColumnSpan="3" ItemsSource="{Binding Cars}"
                         SelectionMode="Single"
                         SelectionChanged="CollectionView_SelectionChanged">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="model:Car">
                     <StackLayout>
-                        <Grid ColumnDefinitions=".33*,.33*,.33*">
-                            <Label x:Name="txtYear" Text="{Binding ModelYear}" Grid.Column="0"
+
+                            <Grid ColumnDefinitions=".33*,.33*,.33*">
+                                <Label x:Name="txtYear" Text="{Binding ModelYear}" Grid.Column="0"
                                         FontSize="24"/>
-                            <Label x:Name="txtMake" Text="{Binding Make}" Grid.Column="1"
+                                <Label x:Name="txtMake" Text="{Binding Make}" Grid.Column="1"
                                         FontSize="24"/>
-                            <Label x:Name="txtModel" Text="{Binding Model}" Grid.Column="2"
+                                <Label x:Name="txtModel" Text="{Binding Model}" Grid.Column="2"
                                         FontSize="24"/>
-                        </Grid>
-                    </StackLayout>
+                            </Grid>
+
+                        </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>

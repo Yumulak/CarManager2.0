@@ -1,4 +1,3 @@
-namespace CarManager.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +6,8 @@ using System.Threading.Tasks;
 using CarManager.Services;
 using CarManager.View;
 
+namespace CarManager.View;
+
 public partial class CarsViewPage : ContentPage
 {
     public ObservableCollection<Car> Cars { get; set; } = new();
@@ -14,7 +15,7 @@ public partial class CarsViewPage : ContentPage
     public CarsViewPage(CarsViewModel vm)
 	{
 		InitializeComponent();
-        //BindingContext = vm;
+        BindingContext = vm;
         BindingContext = this;
 	}
 
@@ -45,4 +46,5 @@ public partial class CarsViewPage : ContentPage
             ["Car"] = car
         });
     }
+
 }

@@ -6,16 +6,12 @@ using System.Threading.Tasks;
 using CarManager.View;
 using CarManager.Model;
 using CarManager.Services;
+using System.Runtime.ConstrainedExecution;
 
 namespace CarManager.ViewModel
 {
-
-    [QueryProperty("Item", "Item")]
     public partial class CarDetailsViewModel : BaseViewModel
     {
-
-        public ObservableCollection<Car> Cars { get; } = new();
-
         public CarDetailsViewModel() 
         {
             

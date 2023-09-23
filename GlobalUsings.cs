@@ -1,5 +1,6 @@
 ﻿global using CommunityToolkit.Mvvm.ComponentModel;
 global using CommunityToolkit.Mvvm.Input;
+global using CommunityToolkit.Maui;
 global using CarManager.Model;
 global using CarManager.ViewModel;
 global using System.Collections.ObjectModel;

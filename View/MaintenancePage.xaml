@@ -5,7 +5,7 @@
              xmlns:model="clr-namespace:CarManager.Model"
              xmlns:viewmodel="clr-namespace:CarManager.ViewModel"
              x:DataType="model:Car"
-             Title="Maintenance">
+             Title="{Binding Model}">
 
     <ScrollView>
         <VerticalStackLayout Padding="20"
@@ -13,7 +13,7 @@
                              VerticalOptions="StartAndExpand">
             <Grid ColumnDefinitions=".80*, .20*"
                   RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto">
-                
+
 
                 <Label Text="Monthly" FontSize="24" Grid.Row="0"/>
 

@@ -13,7 +13,7 @@ namespace CarManager.ViewModel
         public ObservableCollection<Car> Cars { get; set; } = new();
         public CarsViewModel() 
         {
-            Title = "Car Manager";
+
         }
 
         [RelayCommand]
@@ -43,6 +43,24 @@ namespace CarManager.ViewModel
         void SortByYear()
         {
             Cars = new ObservableCollection<Car>(Cars.OrderByDescending(i => i.ModelYear));
+        }
+
+        [RelayCommand]
+        async Task Tap(Car car)
+        {
+            try
+            {
+                var navParameter = new Dictionary<string, object>
+                {
+                    {"Car", car}
+                };
+                await Shell.Current.GoToAsync($"{nameof(DetailsPage)}", navParameter);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+
         }
     }
 }
