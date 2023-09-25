@@ -7,6 +7,7 @@ using SQLite;
 
 namespace CarManager.Model
 {
+    [Table("Car")]
     public class Car
     {
 
@@ -30,39 +31,44 @@ namespace CarManager.Model
         public int Price { get; set; }
         public string Image { get; set; }
         //short term (monthly)
+        // set default value as one month from current date
         //check oil
-        public DateTime monthlyOilChecked { get; set; } = DateTime.Now;
+        public DateTime monthlyOilChecked { get; set; } = (DateTime.Now.AddMonths(1)); 
         //check tire pressure & tread
-        public DateTime monthlyTiresChecked { get; set; } = DateTime.Now;
+        public DateTime monthlyTiresChecked { get; set; } = (DateTime.Now.AddMonths(1));
         //check all lights
-        public DateTime monthlyLightsChecked { get; set; } = DateTime.Now;
+        public DateTime monthlyLightsChecked { get; set; } = (DateTime.Now.AddMonths(1));
         //wipers & washer fluid
-        public DateTime monthlyWasherFluidChecked { get; set; } = DateTime.Now;
+        public DateTime monthlyWasherFluidChecked { get; set; } = (DateTime.Now.AddMonths(1));
 
         //3 months
+        // set default value as three months from current date
         //check brake fluid
-        public DateTime quarterlyBrakeFluidChecked { get; set; } = DateTime.Now;
+        public DateTime quarterlyBrakeFluidChecked { get; set; } = (DateTime.Now.AddMonths(3));
         //check transmission fluid
-        public DateTime quarterlyTransFluidChecked { get; set; } = DateTime.Now;
+        public DateTime quarterlyTransFluidChecked { get; set; } = (DateTime.Now.AddMonths(3));
         //check power steering fluid
-        public DateTime quarterlySteeringFluidChecked { get; set; } = DateTime.Now;
+        public DateTime quarterlySteeringFluidChecked { get; set; } = (DateTime.Now.AddMonths(3));
         //check hoses & belts
-        public DateTime quarterlyHosesBeltsChecked { get; set; } = DateTime.Now;
+        public DateTime quarterlyHosesBeltsChecked { get; set; } = (DateTime.Now.AddMonths(3));
 
         //mid term(6 months)
+        // set default value as six months from current date
         //oil & filter change
-        public DateTime sixMoOilChanged { get; set; } = DateTime.Now;
+        public DateTime sixMoOilChanged { get; set; } = (DateTime.Now.AddMonths(6));
         //rotate tires
-        public DateTime sixMoTiresRotated { get; set; } = DateTime.Now;
+        public DateTime sixMoTiresRotated { get; set; } = (DateTime.Now.AddMonths(6));
         //check battery
-        public DateTime sixMoBatteryChecked { get; set; } = DateTime.Now;
+        public DateTime sixMoBatteryChecked { get; set; } = (DateTime.Now.AddMonths(6));
         //cabin & engine air filters
-        public DateTime sixMoAirFiltersChecked { get; set; } = DateTime.Now;
+        public DateTime sixMoAirFiltersChecked { get; set; } = (DateTime.Now.AddMonths(6));
 
         //long term(yearly)
+        // set default value as 1 year from current date
         //alignment
-        public DateTime yearlyAlignmentDone { get; set; } = DateTime.Now;
+        public DateTime yearlyAlignmentDone { get; set; } = (DateTime.Now.AddYears(1));
         //check/change brakes
-        public DateTime yearlyBrakesChecked { get; set; } = DateTime.Now;
+        public DateTime yearlyBrakesChecked { get; set; } = (DateTime.Now.AddYears(1));
     }
+    
 }

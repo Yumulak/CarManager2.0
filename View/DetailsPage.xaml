@@ -11,12 +11,12 @@
         <VerticalStackLayout Padding="20"
                                  Spacing="10"
                                  VerticalOptions="StartAndExpand">
-            <Grid RowDefinitions="*,*,*,*,*,*,*,*,*,*,*,*,
-                                  *,*,*,*,*,*,*,*,*,*,*,*,
-                                  *,*,*,*,*,*,*,*,*,*,*,*,*,*,*"
-                                  ColumnDefinitions=".80*,.20*">
+            <Grid RowDefinitions="*,*,*,*,*,*,*,*,*,*,*,*,*,
+                                  *,*,*,*,*,*,*,*,*,*,*,*,*,
+                                  *,*,*,*,*,*,*,*,*,*,*,*,*"
+                                  ColumnDefinitions=".30*,.30*,.30*" RowSpacing="5">
                 
-                    <Button Text="Delete" Clicked="OnDeleteClicked" Grid.Row="0" Grid.ColumnSpan="2"/>
+                    <Button Text="Remove Car" Clicked="OnDeleteClicked" Grid.Row="0" Grid.ColumnSpan="3" BackgroundColor="Red"/>
 
                 <Label Text="Make" FontSize="24" Grid.Row="1" Padding="5"/>
                     <Label Text="{Binding Make}" Grid.Row="2"/>
@@ -25,60 +25,74 @@
                 <Label Text="Year" FontSize="24" Grid.Row="5" Padding="5"/>
                     <Label Text="{Binding ModelYear}" Grid.Row="6"/>
 
-                <Label Text="Maintenance" FontSize="30" Grid.Row="7" Padding="5"/>
+                <Label Text="Maintenance" FontSize="30" Grid.ColumnSpan="3" Grid.Row="7" Padding="5"/>
                 
                 <Label Text="Monthly" FontSize="24" Grid.Row="8" Padding="5"/>
 
-                <Label Text="{Binding monthlyOilChecked, StringFormat='{0:d}'}" Grid.Column="0" Grid.Row="9"/>
-                    <Button Text="Done" Grid.Column="1" Grid.Row="9"/>
+                <Label Text="Check Oil:" Grid.Column="0" Grid.Row="9"/>
+                <Label x:Name="monthlyOilCheckedText" Text="{Binding monthlyOilChecked, StringFormat='{0:d}'}" Grid.Column="1" Grid.Row="9"/>
+                <Button Text="Done" Grid.Column="2" Grid.Row="9" Clicked="ResetDate" ClassId="1" BackgroundColor="Green"/>
 
-                <Label Text="{Binding monthlyTiresChecked , StringFormat='{0:d}'}" Grid.Row="10"/>
-                    <Button Text="Done" Grid.Column="1" Grid.Row="10"/>
+                <Label Text="Check Tires:" Grid.Column="0" Grid.Row="10"/>
+                <Label x:Name="monthlyTiresCheckedText" Text="{Binding monthlyTiresChecked , StringFormat='{0:d}'}" Grid.Column="1" Grid.Row="10"/>
+                <Button Text="Done" Grid.Column="2" Grid.Row="10" Clicked="ResetDate" ClassId="2" BackgroundColor="Green"/>
 
-                <Label Text="{Binding monthlyLightsChecked , StringFormat='{0:d}'}" Grid.Row="11"/>
-                    <Button Text="Done" Grid.Column="1" Grid.Row="11"/>
+                <Label Text="Check Lights:" Grid.Column="0" Grid.Row="11"/>
+                <Label x:Name="monthlyLightsCheckedText" Text="{Binding monthlyLightsChecked , StringFormat='{0:d}'}" Grid.Column="1" Grid.Row="11"/>
+                <Button Text="Done" Grid.Column="2" Grid.Row="11" Clicked="ResetDate" ClassId="3" BackgroundColor="Green"/>
 
-                <Label Text="{Binding monthlyWasherFluidChecked , StringFormat='{0:d}'}" Grid.Row="12"/>
-                    <Button Text="Done" Grid.Column="1" Grid.Row="12"/>
+                <Label Text="Check Washer Fluid:" Grid.Column="0" Grid.Row="12"/>
+                <Label x:Name="monthlyWasherFluidCheckedText" Text="{Binding monthlyWasherFluidChecked , StringFormat='{0:d}'}" Grid.Column="1" Grid.Row="12"/>
+                <Button Text="Done" Grid.Column="2" Grid.Row="12" Clicked="ResetDate" ClassId="4" BackgroundColor="Green"/>
 
 
                     <Label Text="Quarterly" FontSize="24" Grid.Row="13"/>
 
-                <Label Text="{Binding quarterlyBrakeFluidChecked , StringFormat='{0:d}'}" Grid.Row="14"/>
-                    <Button Text="Done" Grid.Column="1" Grid.Row="14"/>
+                <Label Text="Check Brake Fluid:" Grid.Column="0" Grid.Row="14"/>
+                <Label x:Name="quarterlyBrakeFluidCheckedText" Text="{Binding quarterlyBrakeFluidChecked , StringFormat='{0:d}'}" Grid.Column="1" Grid.Row="14"/>
+                <Button Text="Done" Grid.Column="2" Grid.Row="14" Clicked="ResetDate" ClassId="5" BackgroundColor="Green"/>
 
-                <Label Text="{Binding quarterlyTransFluidChecked , StringFormat='{0:d}'}" Grid.Row="15"/>
-                    <Button Text="Done" Grid.Column="1" Grid.Row="15"/>
+                <Label Text="Check Transmission Fluid:" Grid.Column="0" Grid.Row="15"/>
+                <Label x:Name="quarterlyTransFluidCheckedText" Text="{Binding quarterlyTransFluidChecked , StringFormat='{0:d}'}" Grid.Column="1" Grid.Row="15"/>
+                <Button Text="Done" Grid.Column="2" Grid.Row="15" Clicked="ResetDate" ClassId="6" BackgroundColor="Green"/>
 
-                <Label Text="{Binding quarterlySteeringFluidChecked , StringFormat='{0:d}'}" Grid.Row="16"/>
-                    <Button Text="Done" Grid.Column="1" Grid.Row="16"/>
+                <Label Text="Check Power Steering Fluid:" Grid.Column="0" Grid.Row="16"/>
+                <Label x:Name="quarterlySteeringFluidCheckedText" Text="{Binding quarterlySteeringFluidChecked , StringFormat='{0:d}'}" Grid.Column="1" Grid.Row="16"/>
+                <Button Text="Done" Grid.Column="2" Grid.Row="16" Clicked="ResetDate" ClassId="7" BackgroundColor="Green"/>
 
-                <Label Text="{Binding quarterlyHosesBeltsChecked , StringFormat='{0:d}'}" Grid.Row="17"/>
-                    <Button Text="Done" Grid.Column="1" Grid.Row="17"/>
+                <Label Text="Check Hoses and Belts:" Grid.Column="0" Grid.Row="17"/>
+                <Label x:Name="quarterlyHosesBeltsCheckedText" Text="{Binding quarterlyHosesBeltsChecked , StringFormat='{0:d}'}" Grid.Column="1" Grid.Row="17"/>
+                <Button Text="Done" Grid.Column="2" Grid.Row="17" Clicked="ResetDate" ClassId="8" BackgroundColor="Green"/>
 
 
                     <Label Text="Biannually" FontSize="24" Grid.Row="18"/>
 
-                <Label Text="{Binding sixMoOilChanged , StringFormat='{0:d}'}" Grid.Row="19"/>
-                    <Button Text="Done" Grid.Column="1" Grid.Row="19"/>
+                <Label Text="Change Oil:" Grid.Column="0" Grid.Row="19"/>
+                <Label x:Name="sixMoOilChangedText" Text="{Binding sixMoOilChanged , StringFormat='{0:d}'}" Grid.Column="1" Grid.Row="19"/>
+                <Button Text="Done" Grid.Column="2" Grid.Row="19" Clicked="ResetDate" ClassId="9" BackgroundColor="Green"/>
 
-                <Label Text="{Binding sixMoTiresRotated , StringFormat='{0:d}'}" Grid.Row="20"/>
-                    <Button Text="Done" Grid.Column="1" Grid.Row="20"/>
+                <Label Text="Rotate Tires:" Grid.Column="0" Grid.Row="20"/>
+                <Label x:Name="sixMoTiresRotatedText" Text="{Binding sixMoTiresRotated , StringFormat='{0:d}'}" Grid.Column="1" Grid.Row="20"/>
+                <Button Text="Done" Grid.Column="2" Grid.Row="20" Clicked="ResetDate" ClassId="10" BackgroundColor="Green"/>
 
-                <Label Text="{Binding sixMoBatteryChecked , StringFormat='{0:d}'}" Grid.Row="21"/>
-                    <Button Text="Done" Grid.Column="1" Grid.Row="21"/>
+                <Label Text="Check Battery:" Grid.Column="0" Grid.Row="21"/>
+                <Label x:Name="sixMoBatteryCheckedText" Text="{Binding sixMoBatteryChecked , StringFormat='{0:d}'}" Grid.Column="1" Grid.Row="21"/>
+                <Button Text="Done" Grid.Column="2" Grid.Row="21" Clicked="ResetDate" ClassId="11" BackgroundColor="Green"/>
 
-                <Label Text="{Binding sixMoAirFiltersChecked , StringFormat='{0:d}'}" Grid.Row="22"/>
-                    <Button Text="Done" Grid.Column="1" Grid.Row="22"/>
+                <Label Text="Check Air Filters:" Grid.Column="0" Grid.Row="22"/>
+                <Label x:Name="sixMoAirFiltersCheckedText" Text="{Binding sixMoAirFiltersChecked , StringFormat='{0:d}'}" Grid.Column="1" Grid.Row="22"/>
+                <Button Text="Done" Grid.Column="2" Grid.Row="22" Clicked="ResetDate" ClassId="12" BackgroundColor="Green"/>
 
 
                     <Label Text="Annually" FontSize="24" Grid.Row="23"/>
 
-                <Label Text="{Binding yearlyAlignmentDone , StringFormat='{0:d}'}" Grid.Row="24"/>
-                    <Button Text="Done" Grid.Column="1" Grid.Row="24"/>
+                <Label Text="Wheel Alignment:" Grid.Column="0" Grid.Row="24"/>
+                <Label x:Name="yearlyAlignmentDoneText" Text="{Binding yearlyAlignmentDone , StringFormat='{0:d}'}" Grid.Column="1" Grid.Row="24"/>
+                <Button Text="Done" Grid.Column="2" Grid.Row="24" Clicked="ResetDate" ClassId="13" BackgroundColor="Green"/>
 
-                <Label Text="{Binding yearlyBrakesChecked , StringFormat='{0:d}'}" Grid.Row="25"/>
-                    <Button Text="Done" Grid.Column="1" Grid.Row="25"/>
+                <Label Text="Check Brakes:" Grid.Column="0" Grid.Row="25"/>
+                <Label x:Name="yearlyBrakesCheckedText" Text="{Binding yearlyBrakesChecked , StringFormat='{0:d}'}" Grid.Column="1" Grid.Row="25"/>
+                <Button Text="Done" Grid.Column="2" Grid.Row="25" Clicked="ResetDate" ClassId="14" BackgroundColor="Green"/>
 
                 </Grid>
         </VerticalStackLayout>

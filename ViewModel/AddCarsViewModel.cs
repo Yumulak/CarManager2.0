@@ -32,23 +32,40 @@ namespace CarManager.ViewModel
         [RelayCommand]
         async Task AddCar()
         {
+            bool carIsValid = (Make.GetType() == typeof(String)) && (Model.GetType() == typeof(String));
             if (string.IsNullOrWhiteSpace(Make) || string.IsNullOrWhiteSpace(Model) || string.IsNullOrWhiteSpace(Year) || string.IsNullOrWhiteSpace(PurchaseYear) || string.IsNullOrWhiteSpace(PurchaseMonth) || string.IsNullOrWhiteSpace(Price))
             {
+                await Shell.Current.DisplayAlert("Error", "All fields must be filled to add a vehicle.", "Okay");
+
                 return;
             }
-            Car car = new(Make, Model, Year, PurchaseYear, PurchaseMonth, Price);
+            try
+            {
+                Car car = new(Make, Model, Year, PurchaseYear, PurchaseMonth, Price);
+                //add item
+                Make = string.Empty;
+                Model = string.Empty;
+                Year = string.Empty;
+                PurchaseYear = string.Empty;
+                PurchaseMonth = string.Empty;
+                Price = string.Empty;
 
-            //add item
-            Make = string.Empty;
-            Model = string.Empty;
-            Year = string.Empty;
-            PurchaseYear = string.Empty;
-            PurchaseMonth = string.Empty;
-            Price = string.Empty;
+                await Shell.Current.DisplayAlert("Car Added", $"{car.Make} {car.Model}", "OK");
+                await CarItemDatabase.AddCarAsync(car);
+                await Shell.Current.GoToAsync("..");
+            }
+            catch (FormatException fe)
+            {
+                await Shell.Current.DisplayAlert("Invalid Format", "All fields must be filled correctly to add a vehicle.", "Okay");
 
-            await Shell.Current.DisplayAlert("Car Added", $"{car.Make} {car.Model}", "OK");
-            await CarItemDatabase.AddCarAsync(car);
-            await Shell.Current.GoToAsync("..");
+                return;
+            }
+            catch(Exception ex)
+            {
+                await Shell.Current.DisplayAlert("Invalid Format", "All fields must be filled correctly to add a vehicle.", "Okay");
+
+                return;
+            }
         }
     }
 }

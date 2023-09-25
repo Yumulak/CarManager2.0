@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,6 +46,108 @@ namespace CarManager.Services
         {
             await Init();
             return await Database.DeleteAsync(car);
+        }
+        //1 month
+        public static void ResetOilCheckById(int id)
+        {
+            using var db = new SQLiteConnection(DBConstants.DatabasePath, DBConstants.Flags);
+            var car = db.Table<Car>().FirstOrDefault(p => p.Id == id);
+            car.monthlyOilChecked = DateTime.Now.AddMonths(1);
+            db.Update(car);
+        }
+        internal static void ResetTireCheckById(int id)
+        {
+            using var db = new SQLiteConnection(DBConstants.DatabasePath, DBConstants.Flags);
+            var car = db.Table<Car>().FirstOrDefault(p => p.Id == id);
+            car.monthlyTiresChecked = DateTime.Now.AddMonths(1);
+            db.Update(car);
+        }
+        internal static void ResetLightsCheckById(int id)
+        {
+            using var db = new SQLiteConnection(DBConstants.DatabasePath, DBConstants.Flags);
+            var car = db.Table<Car>().FirstOrDefault(p => p.Id == id);
+            car.monthlyLightsChecked = DateTime.Now.AddMonths(1);
+            db.Update(car);
+        }
+        internal static void ResetWashFluidById(int id)
+        {
+            using var db = new SQLiteConnection(DBConstants.DatabasePath, DBConstants.Flags);
+            var car = db.Table<Car>().FirstOrDefault(p => p.Id == id);
+            car.monthlyWasherFluidChecked = DateTime.Now.AddMonths(1);
+            db.Update(car);
+        }
+        //3 month
+        internal static void ResetBrakeFluidCheckById(int id)
+        {
+            using var db = new SQLiteConnection(DBConstants.DatabasePath, DBConstants.Flags);
+            var car = db.Table<Car>().FirstOrDefault(p => p.Id == id);
+            car.quarterlyBrakeFluidChecked = DateTime.Now.AddMonths(3);
+            db.Update(car);
+        }
+        internal static void ResetTransCheckById(int id)
+        {
+            using var db = new SQLiteConnection(DBConstants.DatabasePath, DBConstants.Flags);
+            var car = db.Table<Car>().FirstOrDefault(p => p.Id == id);
+            car.quarterlyTransFluidChecked = DateTime.Now.AddMonths(3);
+            db.Update(car);
+        }
+        internal static void ResetSteeringCheckById(int id)
+        {
+            using var db = new SQLiteConnection(DBConstants.DatabasePath, DBConstants.Flags);
+            var car = db.Table<Car>().FirstOrDefault(p => p.Id == id);
+            car.quarterlySteeringFluidChecked = DateTime.Now.AddMonths(3);
+            db.Update(car);
+        }
+        internal static void ResetHosesBeltsById(int id)
+        {
+            using var db = new SQLiteConnection(DBConstants.DatabasePath, DBConstants.Flags);
+            var car = db.Table<Car>().FirstOrDefault(p => p.Id == id);
+            car.quarterlyHosesBeltsChecked = DateTime.Now.AddMonths(3);
+            db.Update(car);
+        }
+        //6 month
+        internal static void ResetOilChangedById(int id)
+        {
+            using var db = new SQLiteConnection(DBConstants.DatabasePath, DBConstants.Flags);
+            var car = db.Table<Car>().FirstOrDefault(p => p.Id == id);
+            car.sixMoOilChanged = DateTime.Now.AddMonths(6);
+            db.Update(car);
+        }
+        internal static void ResetTiresRotatedById(int id)
+        {
+            using var db = new SQLiteConnection(DBConstants.DatabasePath, DBConstants.Flags);
+            var car = db.Table<Car>().FirstOrDefault(p => p.Id == id);
+            car.sixMoTiresRotated = DateTime.Now.AddMonths(6);
+            db.Update(car);
+        }
+        internal static void ResetBatteryCheckedById(int id)
+        {
+            using var db = new SQLiteConnection(DBConstants.DatabasePath, DBConstants.Flags);
+            var car = db.Table<Car>().FirstOrDefault(p => p.Id == id);
+            car.sixMoBatteryChecked = DateTime.Now.AddMonths(6);
+            db.Update(car);
+        }
+        internal static void ResetAirFiltersCheckedById(int id)
+        {
+            using var db = new SQLiteConnection(DBConstants.DatabasePath, DBConstants.Flags);
+            var car = db.Table<Car>().FirstOrDefault(p => p.Id == id);
+            car.sixMoAirFiltersChecked = DateTime.Now.AddMonths(6);
+            db.Update(car);
+        }
+        //1 year
+        internal static void ResetAlignmentById(int id)
+        {
+            using var db = new SQLiteConnection(DBConstants.DatabasePath, DBConstants.Flags);
+            var car = db.Table<Car>().FirstOrDefault(p => p.Id == id);
+            car.yearlyAlignmentDone = DateTime.Now.AddYears(1);
+            db.Update(car);
+        }
+        internal static void ResetBrakesCheckedById(int id)
+        {
+            using var db = new SQLiteConnection(DBConstants.DatabasePath, DBConstants.Flags);
+            var car = db.Table<Car>().FirstOrDefault(p => p.Id == id);
+            car.yearlyBrakesChecked = DateTime.Now.AddYears(1);
+            db.Update(car);
         }
     }
 }

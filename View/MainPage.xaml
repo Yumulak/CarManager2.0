@@ -4,7 +4,11 @@
              xmlns:model="clr-namespace:CarManager.Model"
              xmlns:viewmodel="clr-namespace:CarManager.ViewModel"
              x:DataType="viewmodel:MainViewModel"
-             x:Class="CarManager.View.MainPage">
+             x:Class="CarManager.View.MainPage"
+             xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
+    <ContentPage.Behaviors>
+        <mct:StatusBarBehavior StatusBarColor="Black"/>
+    </ContentPage.Behaviors>
 
     <ScrollView>
         <VerticalStackLayout
@@ -13,7 +17,7 @@
             VerticalOptions="Center">
 
             <Image
-                Source="car.png"
+                Source="car2.png"
                 SemanticProperties.Description="car logo"               
                 HeightRequest="200"
                 HorizontalOptions="Center" />
