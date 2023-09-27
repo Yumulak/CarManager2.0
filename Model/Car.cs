@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SQLite;
 
+
 namespace CarManager.Model
 {
     [Table("Car")]
@@ -19,6 +20,22 @@ namespace CarManager.Model
             PurchasedYear = Convert.ToInt32(purchaseYear);
             PurchasedMonth = Convert.ToInt32(purchaseMonth);
             Price = Convert.ToInt32(price);
+
+            //create initial notifications
+            Notification.ScheduleNotification(monthlyOilChecked - TimeSpan.FromDays(7));
+            Notification.ScheduleNotification(monthlyTiresChecked - TimeSpan.FromDays(7));
+            Notification.ScheduleNotification(monthlyLightsChecked - TimeSpan.FromDays(7));
+            Notification.ScheduleNotification(monthlyWasherFluidChecked - TimeSpan.FromDays(7));
+            Notification.ScheduleNotification(quarterlyBrakeFluidChecked - TimeSpan.FromDays(7));
+            Notification.ScheduleNotification(quarterlyTransFluidChecked - TimeSpan.FromDays(7));
+            Notification.ScheduleNotification(quarterlySteeringFluidChecked - TimeSpan.FromDays(7));
+            Notification.ScheduleNotification(quarterlyHosesBeltsChecked - TimeSpan.FromDays(7));
+            Notification.ScheduleNotification(sixMoOilChanged - TimeSpan.FromDays(7));
+            Notification.ScheduleNotification(sixMoTiresRotated - TimeSpan.FromDays(7));
+            Notification.ScheduleNotification(sixMoBatteryChecked - TimeSpan.FromDays(7));
+            Notification.ScheduleNotification(sixMoAirFiltersChecked - TimeSpan.FromDays(7));
+            Notification.ScheduleNotification(yearlyAlignmentDone - TimeSpan.FromDays(7));
+            Notification.ScheduleNotification(yearlyBrakesChecked - TimeSpan.FromDays(7));
         }
         public Car() { }
         [PrimaryKey, AutoIncrement]
@@ -30,6 +47,7 @@ namespace CarManager.Model
         public int PurchasedMonth { get; set; }
         public int Price { get; set; }
         public string Image { get; set; }
+
         //short term (monthly)
         // set default value as one month from current date
         //check oil

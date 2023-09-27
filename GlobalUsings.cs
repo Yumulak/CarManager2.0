@@ -11,3 +11,5 @@ global using System.Text.Json;
 global using System.Linq;
 global using SQLite;
 global using SQLitePCL;
+global using Plugin.LocalNotification;
+global using CarManager.Services;

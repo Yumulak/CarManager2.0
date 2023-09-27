@@ -19,6 +19,20 @@ public partial class DetailsPage : ContentPage
         get => BindingContext as Car;
         set => BindingContext = value;
     }
+    [RelayCommand]
+    protected override async void OnNavigatedTo(NavigatedToEventArgs args)
+    {
+        base.OnNavigatedTo(args);
+        
+
+    }
+    private void SetButtonIsEnabled(DateTime taskDate)
+    {
+        if(taskDate >= (DateTime.Now - TimeSpan.FromDays(7)))
+        {
+
+        }
+    }
     async void ResetDate(object sender, EventArgs e)
     {
         var button = (Button)sender;
@@ -45,45 +59,45 @@ public partial class DetailsPage : ContentPage
             //3 months
             case 5:
                 CarItemDatabase.ResetBrakeFluidCheckById(Car.Id);
-                quarterlyBrakeFluidCheckedText.Text = DateTime.Now.AddMonths(1).Date.ToString("M/d/yyyy");
+                quarterlyBrakeFluidCheckedText.Text = DateTime.Now.AddMonths(3).Date.ToString("M/d/yyyy");
                 break;
             case 6:
                 CarItemDatabase.ResetTransCheckById(Car.Id);
-                quarterlyTransFluidCheckedText.Text = DateTime.Now.AddMonths(1).Date.ToString("M/d/yyyy");
+                quarterlyTransFluidCheckedText.Text = DateTime.Now.AddMonths(3).Date.ToString("M/d/yyyy");
                 break;
             case 7:
                 CarItemDatabase.ResetSteeringCheckById(Car.Id);
-                quarterlySteeringFluidCheckedText.Text = DateTime.Now.AddMonths(1).Date.ToString("M/d/yyyy");
+                quarterlySteeringFluidCheckedText.Text = DateTime.Now.AddMonths(3).Date.ToString("M/d/yyyy");
                 break;
             case 8:
                 CarItemDatabase.ResetHosesBeltsById(Car.Id);
-                quarterlyHosesBeltsCheckedText.Text = DateTime.Now.AddMonths(1).Date.ToString("M/d/yyyy");
+                quarterlyHosesBeltsCheckedText.Text = DateTime.Now.AddMonths(3).Date.ToString("M/d/yyyy");
                 break;
             //6 months
             case 9:
                 CarItemDatabase.ResetOilChangedById(Car.Id);
-                sixMoOilChangedText.Text = DateTime.Now.AddMonths(1).Date.ToString("M/d/yyyy");
+                sixMoOilChangedText.Text = DateTime.Now.AddMonths(6).Date.ToString("M/d/yyyy");
                 break;
             case 10:
                 CarItemDatabase.ResetTiresRotatedById(Car.Id);
-                monthlyOilCheckedText.Text = DateTime.Now.AddMonths(1).Date.ToString("M/d/yyyy");
+                monthlyOilCheckedText.Text = DateTime.Now.AddMonths(6).Date.ToString("M/d/yyyy");
                 break;
             case 11:
                 CarItemDatabase.ResetBatteryCheckedById(Car.Id);
-                sixMoBatteryCheckedText.Text = DateTime.Now.AddMonths(1).Date.ToString("M/d/yyyy");
+                sixMoBatteryCheckedText.Text = DateTime.Now.AddMonths(6).Date.ToString("M/d/yyyy");
                 break;
             case 12:
                 CarItemDatabase.ResetAirFiltersCheckedById(Car.Id);
-                sixMoAirFiltersCheckedText.Text = DateTime.Now.AddMonths(1).Date.ToString("M/d/yyyy");
+                sixMoAirFiltersCheckedText.Text = DateTime.Now.AddMonths(6).Date.ToString("M/d/yyyy");
                 break;
             //yearly
             case 13:
                 CarItemDatabase.ResetAlignmentById(Car.Id);
-                yearlyAlignmentDoneText.Text = DateTime.Now.AddMonths(1).Date.ToString("M/d/yyyy");
+                yearlyAlignmentDoneText.Text = DateTime.Now.AddYears(1).Date.ToString("M/d/yyyy");
                 break;
             case 14:
                 CarItemDatabase.ResetBrakesCheckedById(Car.Id);
-                yearlyBrakesCheckedText.Text = DateTime.Now.AddMonths(1).Date.ToString("M/d/yyyy");
+                yearlyBrakesCheckedText.Text = DateTime.Now.AddYears(1).Date.ToString("M/d/yyyy");
                 break;
         }        
     }
