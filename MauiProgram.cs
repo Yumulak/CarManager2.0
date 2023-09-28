@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using CarManager.View;
 using CarManager.Services;
+using MauiIcons.Material;
 
 namespace CarManager
 {
@@ -13,6 +14,7 @@ namespace CarManager
                 .UseMauiApp<App>()
                 .UseMauiCommunityToolkit()
                 .UseLocalNotification()
+                .UseMauiApp<App>().UseMaterialMauiIcons()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

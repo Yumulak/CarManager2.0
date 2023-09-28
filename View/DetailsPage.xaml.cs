@@ -26,6 +26,11 @@ public partial class DetailsPage : ContentPage
         
 
     }
+    //buttons IsEnabled = false is the default
+    //if datetime.now > task time value
+    //  set button IsEnabled to true
+    //on click button
+    //  set IsEnabled to false
     private void SetButtonIsEnabled(DateTime taskDate)
     {
         if(taskDate >= (DateTime.Now - TimeSpan.FromDays(7)))

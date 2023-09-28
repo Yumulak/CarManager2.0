@@ -29,7 +29,7 @@
 
                 <Label Text="Check Oil:" Grid.Column="0" Grid.Row="8"/>
                 <Label x:Name="monthlyOilCheckedText" Text="{Binding monthlyOilChecked, StringFormat='{0:d}'}" Grid.Column="1" Grid.Row="8" ClassId="1"/>
-                <Button Text="Done" Grid.Column="2" Grid.Row="8" Clicked="ResetDate" ClassId="1" BackgroundColor="Green" IsEnabled="False"/>
+                <Button Text="Done" Grid.Column="2" Grid.Row="8" Clicked="ResetDate" ClassId="1" BackgroundColor="Green"/>
 
                 <Label Text="Check Tires:" Grid.Column="0" Grid.Row="9"/>
                 <Label x:Name="monthlyTiresCheckedText" Text="{Binding monthlyTiresChecked , StringFormat='{0:d}'}" Grid.Column="1" Grid.Row="9" ClassId="2"/>
