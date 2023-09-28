@@ -47,6 +47,8 @@ namespace CarManager.Services
             await Init();
             return await Database.DeleteAsync(car);
         }
+
+        #region Update Task Dates
         //1 month
         public static void ResetOilCheckById(int id)
         {
@@ -163,5 +165,6 @@ namespace CarManager.Services
             db.Update(car);
             Notification.ScheduleNotification(car.yearlyBrakesChecked - TimeSpan.FromDays(7));
         }
+        #endregion
     }
 }

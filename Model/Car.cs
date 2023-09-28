@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +12,6 @@ namespace CarManager.Model
     [Table("Car")]
     public class Car
     {
-
         public Car(string make, string model, string year, string purchaseYear, string purchaseMonth, string price)
         {
             Make = make;
@@ -87,6 +87,5 @@ namespace CarManager.Model
         public DateTime yearlyAlignmentDone { get; set; } = (DateTime.Now.AddYears(1));
         //check/change brakes
         public DateTime yearlyBrakesChecked { get; set; } = (DateTime.Now.AddYears(1));
-    }
-    
+    }    
 }

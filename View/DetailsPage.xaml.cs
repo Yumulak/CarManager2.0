@@ -20,28 +20,81 @@ public partial class DetailsPage : ContentPage
         set => BindingContext = value;
     }
     [RelayCommand]
-    protected override async void OnNavigatedTo(NavigatedToEventArgs args)
+    protected override void OnNavigatedTo(NavigatedToEventArgs args)
     {
         base.OnNavigatedTo(args);
-        
-
+        #region checkbuttons
+        if (DateTime.Now > Car.monthlyOilChecked-TimeSpan.FromDays(7))
+        {
+            this.monthlyOilCheckedBtn.IsEnabled = true;            
+        }
+        if (DateTime.Now > Car.monthlyTiresChecked - TimeSpan.FromDays(7))
+        {
+            this.monthlyTiresCheckedBtn.IsEnabled = true;
+        }
+        if (DateTime.Now > Car.monthlyLightsChecked - TimeSpan.FromDays(7))
+        {
+            this.monthlyLightsCheckedBtn.IsEnabled = true;
+        }
+        if (DateTime.Now > Car.monthlyWasherFluidChecked - TimeSpan.FromDays(7))
+        {
+            this.monthlyWasherFluidCheckedBtn.IsEnabled = true;
+        }
+        //
+        if (DateTime.Now > Car.quarterlyBrakeFluidChecked - TimeSpan.FromDays(7))
+        {
+            this.quarterlyBrakeFluidCheckedBtn.IsEnabled = true;
+        }
+        if (DateTime.Now > Car.quarterlyHosesBeltsChecked - TimeSpan.FromDays(7))
+        {
+            this.quarterlyHosesBeltsCheckedBtn.IsEnabled = true;
+        }
+        if (DateTime.Now > Car.quarterlySteeringFluidChecked - TimeSpan.FromDays(7))
+        {
+            this.quarterlySteeringFluidCheckedBtn.IsEnabled = true;
+        }
+        if (DateTime.Now > Car.quarterlyTransFluidChecked - TimeSpan.FromDays(7))
+        {
+            this.quarterlyTransFluidCheckedBtn.IsEnabled = true;
+        }
+        //
+        if (DateTime.Now > Car.sixMoAirFiltersChecked - TimeSpan.FromDays(7))
+        {
+            this.sixMoAirFiltersCheckedBtn.IsEnabled = true;
+        }
+        if (DateTime.Now > Car.sixMoBatteryChecked - TimeSpan.FromDays(7))
+        {
+            this.sixMoBatteryCheckedBtn.IsEnabled = true;
+        }
+        if (DateTime.Now > Car.sixMoOilChanged - TimeSpan.FromDays(7))
+        {
+            this.sixMoOilChangedBtn.IsEnabled = true;
+        }
+        if (DateTime.Now > Car.sixMoTiresRotated - TimeSpan.FromDays(7))
+        {
+            this.sixMoTiresRotatedBtn.IsEnabled = true;
+        }
+        //
+        if (DateTime.Now > Car.yearlyAlignmentDone - TimeSpan.FromDays(7))
+        {
+            this.yearlyAlignmentDoneBtn.IsEnabled = true;
+        }
+        if (DateTime.Now > Car.yearlyBrakesChecked - TimeSpan.FromDays(7))
+        {
+            this.yearlyBrakesCheckedBtn.IsEnabled = true;
+        }
+        #endregion
     }
     //buttons IsEnabled = false is the default
-    //if datetime.now > task time value
+    //if datetime.now > 7 days before task time value
     //  set button IsEnabled to true
     //on click button
     //  set IsEnabled to false
-    private void SetButtonIsEnabled(DateTime taskDate)
-    {
-        if(taskDate >= (DateTime.Now - TimeSpan.FromDays(7)))
-        {
-
-        }
-    }
     async void ResetDate(object sender, EventArgs e)
     {
-        var button = (Button)sender;
+        var button = (Button)sender;        
         var classId = Convert.ToInt32(button.ClassId);
+        #region resetbuttons
         switch (classId)
         {
             //one month
@@ -104,13 +157,19 @@ public partial class DetailsPage : ContentPage
                 CarItemDatabase.ResetBrakesCheckedById(Car.Id);
                 yearlyBrakesCheckedText.Text = DateTime.Now.AddYears(1).Date.ToString("M/d/yyyy");
                 break;
-        }        
+        }
+        #endregion
     }
-    
+
     async void OnDeleteClicked(object sender, EventArgs e)
     {
-        await CarItemDatabase.DeleteItemAsync(Car);
-        await Shell.Current.GoToAsync("..");
+        var result = Shell.Current.DisplayAlert("Delete Vehicle", "Are you sure?", "No", "Yes");
+
+        if( await result != true)
+        {
+            await CarItemDatabase.DeleteItemAsync(Car);
+            await Shell.Current.GoToAsync("..");
+        }
     }
     async void GoToMaintenancePage(object sender, EventArgs e)
     {

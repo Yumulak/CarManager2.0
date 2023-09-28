@@ -39,6 +39,21 @@ namespace CarManager.ViewModel
                     await Shell.Current.DisplayAlert("Error", "All fields must be filled to add a vehicle.", "Okay");
                     return;
                 }
+                if(Year.Length != 4) 
+                {
+                    await Shell.Current.DisplayAlert("Error", "Model year must be 4 digits long.", "Okay");
+                    return;
+                }
+                if (PurchaseYear.Length != 4)
+                {
+                    await Shell.Current.DisplayAlert("Error", "Model year must be 4 digits long.", "Okay");
+                    return;
+                }
+                if(PurchaseMonth.Length != 2)
+                {
+                    await Shell.Current.DisplayAlert("Error", "Purchase month must be two digits.", "Okay");
+                    return;
+                }
                 try
                 {
                     Car car = new(Make, Model, Year, PurchaseYear, PurchaseMonth, Price);

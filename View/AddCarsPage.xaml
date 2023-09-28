@@ -5,7 +5,7 @@
              xmlns:model="clr-namespace:CarManager.Model"
              xmlns:viewmodel="clr-namespace:CarManager.ViewModel"
              x:DataType="viewmodel:AddCarsViewModel"
-             Title="AddCarsPage">
+             Title="Add a Vehicle">
     
     <Grid RowDefinitions="100, Auto, Auto, Auto"
           ColumnDefinitions=".33*,.33*,.33*"
