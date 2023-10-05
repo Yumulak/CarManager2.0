@@ -1,6 +1,6 @@
 # CarManager
 # Future Plans
-Migrate to Azure App Service to use Azure SQL
+Migrate to Azure App Service to use Azure SQL database instead of the current local SQLite database
 
 ## Video Walkthrough
 
