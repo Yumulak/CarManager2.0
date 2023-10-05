@@ -1,4 +1,6 @@
 # CarManager
+Future Plans
+Migrate to Azure App Service to use Azure SQL
 
 ## Video Walkthrough
 
